@@ -48,7 +48,7 @@ public class ContentController{
                       , @RequestParam(value="user", defaultValue="user1") String user
                       ) {
         try {
-            mongo = new SimpleMongoDbFactory(new MongoClient("localhost", 3001), "yourdb");
+            mongo = new SimpleMongoDbFactory(new MongoClient("127.0.0.1", 27017), "yourdb");
         }
         catch (Exception e) {
 
