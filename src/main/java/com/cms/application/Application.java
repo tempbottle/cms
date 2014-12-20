@@ -6,9 +6,13 @@ package com.cms.application;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.ComponentScan;
+import com.cms.application.models.Entry;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 
 @ComponentScan
 @EnableAutoConfiguration
+@PropertySources(value = {@PropertySource("classpath:application.properties")})
 public class Application {
 
     public static void main(String[] args) {
