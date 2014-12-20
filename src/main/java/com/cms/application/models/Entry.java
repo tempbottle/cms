@@ -2,7 +2,6 @@ package com.cms.application.models;
 
 import java.util.List;
 
-import javafx.util.Pair;
 import org.joda.time.DateTime;
 import java.util.stream.Collectors;
 import org.springframework.data.annotation.Id;
@@ -25,6 +24,17 @@ public class Entry {
     private final List<Pair<String, String>> attachmentIds;
     private final DateTime date;
 
+    public class Pair<K,V> {
+
+        K k;
+        V v;
+
+        Pair(K k, V v) {
+            this.k = k;
+            this.v = v;
+        }
+
+    }
 
     public Entry(String title
                , String body
