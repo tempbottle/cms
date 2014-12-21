@@ -9,7 +9,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface EntryRepository extends MongoRepository<Entry, String> {
 
-    public Entry findByTitle(String title);
-    public List<Entry> findByUser(String user);
+    Entry findOne(String primaryKey);
+    List<Entry> findAll();
+    long count();
+    void delete(Entry entry);
+    List<Entry> findByTitle(String title);
+    List<Entry> findByUser(String user);
+    List<Entry> findByTags(List<String> tags);
+    boolean exists (String primaryKey);
 
 }

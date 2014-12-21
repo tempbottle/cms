@@ -1,16 +1,15 @@
 package com.cms.application.models;
 
-import java.util.List;
-
 import org.joda.time.DateTime;
-import java.util.stream.Collectors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by rkonell on 12/6/14.
  */
-
+@Document(collection = "entry")
 public class Entry {
 
 
@@ -24,18 +23,6 @@ public class Entry {
     private final List<Pair<String, String>> attachmentIds;
     private final DateTime date;
 
-    public class Pair<K,V> {
-
-        K k;
-        V v;
-
-        Pair(K k, V v) {
-            this.k = k;
-            this.v = v;
-        }
-
-    }
-
     public Entry(String title
                , String body
                , String user
@@ -45,8 +32,8 @@ public class Entry {
         this.title = title;
         this.body = body;
         this.user = user;
-        this.tags = tags;
-        this.attachmentIds = attachmentIds;
+        this.tags = tags != null ? tags : new ArrayList<String>();
+        this.attachmentIds = attachmentIds != null ? attachmentIds : new ArrayList<Pair<String, String>>();
         this.date = date;
     }
 
@@ -64,7 +51,9 @@ public class Entry {
         return tags_;
     }
 
-    public List<Pair<String, String>> getAttachmentIds() { return this.attachmentIds; }
+    public List<Pair<String, String>> getAttachmentIds() {
+        return attachmentIds;
+    }
 
     public DateTime getDate() { return this.date; }
 
