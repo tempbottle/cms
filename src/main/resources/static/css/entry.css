@@ -1,8 +1,8 @@
 .entry-div {
-border: 2px solid;
-border-radius: 11px;
-border-color: dimgrey;
-width: 440px;
+    border-radius: 11px;
+    border: 2px solid dimgrey;
+    width: 70%;
+    background-color: #b0e0e6;
 }
 
 .center {

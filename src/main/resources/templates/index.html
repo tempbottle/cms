@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Content Management System" />
+    <meta name="author" content="" />
     <title>CMS</title>
 
-
-    <!-- Custom Stylings -->
     <link href="css/entry.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet" />
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -19,27 +21,48 @@
     <![endif] -->
 </head>
 <body>
-<div>
-    <form id="entry_form" action="/new_entry" method="POST">
-        User: <input type="text" name="user" />
-        Title: <input type="text" name="title" />
-        Body: <textarea name="body" form="entry_form">Input message...</textarea>
-        <input type="submit" value="Post" />
-    </form>
-</div>
-<h1>Posts:</h1>
-<!--@thymesVar id="entries" type="List<Entry>"-->
-<div class="entry-div center" th:each="entry : ${entries}">
-        <!--@thymesVar id="entry" type="Entry"-->
-        <b th:text="${entry.title}"></b><br />
-        <p th:text="${entry.body}"></p><br />
-        <i th:text="${entry.user}"></i> : <i th:text="${entry.date}"></i>
-            <div th:each="tag : ${entry.tags}">Tags: <i th:text="${tag}"></i></div>
-</div>
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#">About</a></li>
+                    <li role="presentation"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Project name</h3>
+        </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+        <div class="jumbotron">
+            <h1>CMS</h1>
+            <p class="lead">Description!</p>
+            <form id="entry_form" action="/new_entry" method="POST">
+                User: <input type="text" name="user" />
+                Title: <input type="text" name="title" /> <br />
+                Body: <textarea name="body" form="entry_form">Input message...</textarea> <br />
+                <input class="btn" type="submit" value="Post" />
+            </form>
+        </div>
+        <h1>Posts:</h1>
+        <!--@thymesVar id="entries" type="List<Entry>"-->
+        <div class="row marketing">
+            <div class="col-lg-6 entry-div" th:each="entry : ${entries}">
+                <!--@thymesVar id="entry" type="Entry"-->
+                <b th:text="${entry.title}"></b><br />
+                <p th:text="${entry.body}"></p><br />
+                <i th:text="${entry.user}"></i> : <i th:text="${entry.date}"></i>
+                    <div th:each="tag : ${entry.tags}">Tags: <i th:text="${tag}"></i></div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>&copy; pipe-d 2014</p>
+        </footer>
+
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
