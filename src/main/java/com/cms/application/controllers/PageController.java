@@ -7,6 +7,7 @@ package com.cms.application.controllers;
 
 import com.cms.application.models.Entry;
 import com.cms.application.models.EntryRepository;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,17 @@ public class PageController {
         List<Entry> list = repository.findAll();
         model.addAttribute("entries", list);
         return "index";
+    }
+
+    @RequestMapping(value="/new_entry", method= RequestMethod.POST)
+    public String post( @RequestParam(value="title", defaultValue="title") String title
+            , @RequestParam(value="body", defaultValue="body") String body
+            , @RequestParam(value="user", defaultValue="user1") String user
+            , Model model
+    ) {
+        Entry entry = new Entry(title, body, user, null, null, DateTime.now());
+        repository.save(entry);
+        return root(model);
     }
 
 }

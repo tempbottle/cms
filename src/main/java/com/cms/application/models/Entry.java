@@ -60,7 +60,7 @@ public class Entry {
     @Override
     public String toString() {
         return String.format(
-                "post[title='%s', body='%s', user='%s', tags='%s', attachment ids='%s', date='%s']",
+                "Entry: [title='%s', body='%s', user='%s', tags='%s', attachment ids='%s', date='%s']",
                 title, body, user, getTags(), attachmentIds, date);
     }
 
